@@ -558,7 +558,7 @@ function App() {
               <div className="info-card">
                 <Cpu size={32} />
                 <h3>Tug'ilgan sana</h3>
-                <p>22-fevral, 2007</p>
+                <p>22-fevral</p>
               </div>
 
               <div className="info-card">
