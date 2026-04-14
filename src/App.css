@@ -1,7 +1,12 @@
 /* ========================================
    PORTFOLIO STYLES - OTBK.UZ
-   Brutal & High-Tech Aesthetic
+   Dark Brutal & High-Tech Aesthetic
    ======================================== */
+
+.app {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
 
 /* Progress Bar */
 .progress-bar {
