@@ -1,33 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import {
-  Code2,
-  Smartphone,
-  Globe,
-  Brain,
-  Server,
-  Shield,
-  Database,
-  Cloud,
-  Layers,
-  Terminal,
-  Cpu,
-  Rocket,
-  ChevronDown,
-  Menu,
-  X,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  ExternalLink,
-  Star,
-  Award,
-  Users,
-  Zap,
-  ArrowRight
-} from 'lucide-react'
+import { Code2, Smartphone, Globe, Brain, Server, Shield, Database, Cloud, Layers, Terminal, Cpu, Rocket, ChevronDown, Menu, X, Mail, Phone, MapPin, ExternalLink, Star, Award, Users, Zap, ArrowRight } from 'lucide-react'
+import photoMain from './assets/photo_main.jpg'
+import photo1 from './assets/photo1.jpg'
+import photo2 from './assets/photo2.jpg'
+import photo3 from './assets/photo3.jpg'
 import './App.css'
 
 function App() {
@@ -38,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'services', 'projects', 'experience', 'stack', 'contact']
+      const sections = ['hero', 'about', 'services', 'projects', 'experience', 'gallery', 'stack', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -63,6 +40,7 @@ function App() {
     { id: 'services', label: 'Xizmatlar' },
     { id: 'projects', label: 'Loyihalar' },
     { id: 'experience', label: 'Tajriba' },
+    { id: 'gallery', label: 'Galereya' },
     { id: 'stack', label: 'Texnologiyalar' },
     { id: 'contact', label: 'Aloqa' },
   ]
@@ -164,14 +142,6 @@ function App() {
       status: 'Faol'
     },
     {
-      title: 'Yoshlar Front Ofisi',
-      description: 'Maxsus bot va mobil ilovalar ekotizimi. Web platforma (front-ofis.uz) Render kabi bulutli platformalarda to\'liq domen va server sozlamalari bilan ishga tushirilgan. Real-time analytics va user management tizimi.',
-      tech: ['Flutter', 'Node.js', 'MongoDB', 'Telegram Bot API', 'Render'],
-      image: '🏢',
-      link: 'https://front-ofis.uz',
-      status: 'Faol'
-    },
-    {
       title: 'Ravshanov AI (RAI)',
       description: 'Sun\'iy intellekt va raqamli innovatsiyalarga yo\'naltirilgan AI-ekotizim. Gemini API va boshqa ilg\'or neyrotarmoqlarni amaliy dasturlarga integratsiya. Mustaqil tahlil va avtomatlashtirish qobiliyatiga ega.',
       tech: ['Python', 'Gemini API', 'FastAPI', 'React', 'LangChain'],
@@ -268,12 +238,14 @@ function App() {
   ]
 
   const techStack = {
-    'Frontend': ['React', 'Next.js', 'Vue.js', 'Flutter', 'TypeScript', 'Tailwind CSS'],
-    'Backend': ['Python', 'FastAPI', 'Django', 'Node.js', 'Express', 'GraphQL'],
-    'Database': ['PostgreSQL', 'MongoDB', 'Redis', 'SQLite', 'Firebase'],
-    'DevOps': ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Render', 'CI/CD'],
-    'AI/ML': ['Gemini API', 'LangChain', 'TensorFlow', 'PyTorch', 'OpenAI'],
-    'Tools': ['Git', 'VS Code', 'Figma', 'Postman', 'Linux', 'Nginx'],
+    'Frontend': ['React', 'Next.js', 'Vue.js', 'Flutter', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'SASS'],
+    'Backend': ['Python', 'FastAPI', 'Django', 'Node.js', 'Express', 'GraphQL', 'Flask', 'Dart'],
+    'Database': ['PostgreSQL', 'MongoDB', 'Redis', 'SQLite', 'Firebase', 'MySQL', 'InfluxDB'],
+    'DevOps': ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Render', 'CI/CD', 'Nginx', 'Linux'],
+    'AI/ML': ['Gemini API', 'LangChain', 'TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'RAG'],
+    'Tools': ['Git', 'VS Code', 'Figma', 'Postman', 'JetBrains IDE', 'Docker Compose'],
+    'Mobile': ['Flutter', 'Dart', 'Provider', 'Riverpod', 'Bloc', 'Firebase', 'App Store Connect'],
+    'Testing': ['Jest', 'Pytest', 'Cypress', 'Postman', 'Selenium', 'Unit Testing'],
   }
 
   const fadeInUp = {
@@ -351,16 +323,6 @@ function App() {
       <section id="hero" className="hero-section">
         <div className="hero-grid">
           <div className="hero-content">
-            <motion.div
-              className="status-badge"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="pulse-dot" />
-              Loyihalar uchun ochiq
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -440,39 +402,18 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <div className="code-window">
+            <div className="profile-window">
               <div className="window-header">
                 <div className="window-dots">
                   <span className="red" />
                   <span className="yellow" />
                   <span className="green" />
                 </div>
-                <span className="window-title">developer.py</span>
+                <span className="window-title">otbek_ravshanov.jpg</span>
               </div>
-              <pre className="code-content">
-                <code>
-                  {`class OtabekRavshanov:
-    def __init__(self):
-        self.age = 18
-        self.location = "Toshkent"
-        self.role = "Software Architect"
-        self.status = "Available"
-    
-    def skills(self):
-        return {
-            "languages": ["Python", "Dart", "JS"],
-            "focus": ["AI", "Web", "Mobile"],
-            "mindset": "Beast Mode"
-        }
-    
-    def build_future(self):
-        while True:
-            self.learn()
-            self.create()
-            self.innovate()
-            # Hech qachon to'xtama`}
-                </code>
-              </pre>
+              <div className="window-content">
+                <img src={photoMain} alt="Otabek Ravshanov" className="profile-photo" />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -677,6 +618,37 @@ function App() {
         </motion.div>
       </section>
 
+      {/* Gallery Section */}
+      <section id="gallery" className="gallery-section">
+        <motion.div
+          className="container"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
+          <motion.h2 variants={fadeInUp} className="section-title">
+            Foto <span className="accent">Galereya</span>
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="section-subtitle">
+            Professional va ijodiy lahzalar
+          </motion.p>
+
+          <motion.div className="gallery-grid" variants={staggerContainer}>
+            {[photoMain, photo1, photo2, photo3].map((photo, index) => (
+              <motion.div
+                key={index}
+                className="gallery-item"
+                variants={fadeInUp}
+                whileHover={{ scale: 1.03 }}
+              >
+                <img src={photo} alt={`Otabek Ravshanov - Photo ${index + 1}`} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Tech Stack Section */}
       <section id="stack" className="stack-section">
         <motion.div
@@ -740,19 +712,19 @@ function App() {
 
           <motion.div className="contact-grid" variants={staggerContainer}>
             <motion.div className="contact-info" variants={staggerContainer}>
-              <motion.a href="mailto:contact@otbk.uz" className="contact-item" variants={fadeInUp}>
+              <motion.a href="mailto:otabekxoff@gmail.com" className="contact-item" variants={fadeInUp}>
                 <Mail size={28} />
                 <div>
                   <h4>Email</h4>
-                  <p>contact@otbk.uz</p>
+                  <p>otabekxoff@gmail.com</p>
                 </div>
               </motion.a>
 
-              <motion.a href="tel:+998901234567" className="contact-item" variants={fadeInUp}>
+              <motion.a href="tel:+998880016777" className="contact-item" variants={fadeInUp}>
                 <Phone size={28} />
                 <div>
                   <h4>Telefon</h4>
-                  <p>+998 90 123 45 67</p>
+                  <p>+998 88 001 67 77</p>
                 </div>
               </motion.a>
 
@@ -765,14 +737,20 @@ function App() {
               </motion.div>
 
               <div className="social-links">
-                <motion.a href="https://github.com/otbkuz" target="_blank" rel="noopener noreferrer" variants={fadeInUp}>
-                  <Github size={24} />
+                <motion.a href="https://instagram.com/otbk.uz" target="_blank" rel="noopener noreferrer" variants={fadeInUp} title="Instagram">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
                 </motion.a>
-                <motion.a href="https://linkedin.com/in/otbkuz" target="_blank" rel="noopener noreferrer" variants={fadeInUp}>
-                  <Linkedin size={24} />
+                <motion.a href="https://t.me/otabek_avazbekovich" target="_blank" rel="noopener noreferrer" variants={fadeInUp} title="Telegram">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                  </svg>
                 </motion.a>
-                <motion.a href="mailto:contact@otbk.uz" variants={fadeInUp}>
-                  <Mail size={24} />
+                <motion.a href="https://github.com/otabekxoff-creator" target="_blank" rel="noopener noreferrer" variants={fadeInUp} title="GitHub">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
                 </motion.a>
               </div>
             </motion.div>
