@@ -256,85 +256,27 @@ function App() {
   }
 
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 40 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-
-  const fadeInDown = {
-    initial: { opacity: 0, y: -60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5 }
   }
 
   const fadeInLeft = {
-    initial: { opacity: 0, x: -60 },
+    initial: { opacity: 0, x: -40 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-
-  const fadeInRight = {
-    initial: { opacity: 0, x: 60 },
-    animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.5 }
   }
 
   const scaleIn = {
-    initial: { opacity: 0, scale: 0.8 },
+    initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-
-  const rotateIn = {
-    initial: { opacity: 0, rotate: -180 },
-    animate: { opacity: 1, rotate: 0 },
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-
-  const slideIn = {
-    initial: { opacity: 0, x: 100 },
-    animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.7, ease: "easeOut" }
-  }
-
-  const bounceIn = {
-    initial: { opacity: 0, y: -100 },
-    animate: { opacity: 1, y: 0 },
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut",
-      type: "spring",
-      stiffness: 100
-    }
+    transition: { duration: 0.4 }
   }
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const staggerContainerSlow = {
-    animate: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const glowPulse = {
-    animate: {
-      boxShadow: [
-        "0 0 20px rgba(212, 175, 55, 0.2)",
-        "0 0 40px rgba(212, 175, 55, 0.4)",
-        "0 0 20px rgba(212, 175, 55, 0.2)"
-      ],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
+        staggerChildren: 0.08
       }
     }
   }
@@ -461,25 +403,14 @@ function App() {
                 className="btn-primary"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                {...glowPulse}
-              >
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Rocket size={20} />
-                </motion.div>
+                              >
+<Rocket size={20} />
                 Loyihalarni ko'rish
               </motion.a>
-              <motion.a 
-                href="#contact" 
-                className="btn-secondary"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <a href="#contact" className="btn-secondary">
                 <Mail size={20} />
                 Bog'lanish
-              </motion.a>
+              </a>
             </motion.div>
 
             <motion.div
@@ -498,22 +429,10 @@ function App() {
                 <motion.div
                   key={index}
                   className="stat"
-                  variants={scaleIn}
                   whileHover={{ scale: 1.1, y: -5 }}
                 >
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                  >
-                    {stat.icon}
-                  </motion.div>
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.3 + index * 0.1 }}
-                  >
-                    {stat.value}
-                  </motion.span>
+                  {stat.icon}
+                  <span>{stat.value}</span>
                   <small>{stat.label}</small>
                 </motion.div>
               ))}
@@ -522,44 +441,26 @@ function App() {
 
           <motion.div
             className="hero-visual"
-            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.02, rotate: 2 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <motion.div 
-              className="profile-window"
-              whileHover={{ boxShadow: "0 0 60px rgba(212, 175, 55, 0.4)" }}
-              transition={{ duration: 0.3 }}
-            >
+            <div className="profile-window">
               <div className="window-header">
                 <div className="window-dots">
-                  <motion.span 
-                    className="red"
-                    whileHover={{ scale: 1.2 }}
-                  />
-                  <motion.span 
-                    className="yellow"
-                    whileHover={{ scale: 1.2 }}
-                  />
-                  <motion.span 
-                    className="green"
-                    whileHover={{ scale: 1.2 }}
-                  />
+                  <span className="red" />
+                  <span className="yellow" />
+                  <span className="green" />
                 </div>
               </div>
               <div className="window-content">
-                <motion.img 
+                <img 
                   src={photoMain} 
                   alt="Otabek Ravshanov" 
                   className="profile-photo"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                  whileHover={{ scale: 1.05 }}
                 />
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 
@@ -595,20 +496,23 @@ function App() {
                 Yoshligimdan kompyuter texnologiyalari va dasturlashga qiziqib kelganman, bu qiziqish menga professional yo'lni tanlashimda asos bo'ldi.
               </p>
               <p>
-                Mening dasturlashga bo'lgan sayohatim 2017-yilda Takvandoga borib, u yerda o'z bilimlarimni rivojlantirishni boshlaganimdan boshlangan.
-                Bu yerda men o'z-o'zimni sinab ko'rish va mustaqil o'rganish ko'nikmalarini rivojlantirish imkoniyatiga ega bo'ldim.
-                2018-yilda Qo'qon Innavations dasturlash kursida o'qishni boshlaganim bilan professional dasturchilik yo'liga qadam qo'ydim.
-                Bu kurslarda zamonaviy dasturlash asoslarini chuqur o'rgandim va amaliy loyihalar ustida ishlash orqali tajriba orttirdim.
+                Mening dasturlashga bo'lgan sayohatim 2017-yilda boshlangan. Bir vaqtlar men takvando sporti bilan shug'ullanganman, lekin keyinchalik uni to'xtatib, 
+                dasturlashga qiziqishimga asosiy e'tibor qaratishga qaror qildim. 2018-yilda Qo'qon Innavations dasturlash kursida o'qishni boshlaganim bilan professional dasturchilik yo'liga qadam qo'ydim.
+                Bu kurslarda zamonaviy dasturlash asoslarini chuqur o'rgandim: HTML, CSS, JavaScript dan boshlab, murakkab backend texnologiyalarigacha.
+                Amaliy loyihalar ustida ishlash orqali tajriba orttirdim va real muammolarni yechish ko'nikmalarini rivojlantirdim.
               </p>
               <p>
                 Bugungi kunda men bir nechta muhim lavozimlarda ishlamoqda: Turon Beton MChJ da dasturiy ta'minotni ishlab chiqish bo'limi boshlig'i, 
                 Ravshanov AI (RAI) asoschisi va bosh arxitektori, InteliSoft strategik a'zosi va bosh maslahatchi, 
                 shuningdek Sinergiya hamkorlik loyihalarida hammuassis va texnik direktor sifatida faoliyat yuritaman.
+                Ushbu lavozimlarda ERP tizimlari, AI-ekotizimlar, murakkab biznes tizimlari va platform arxitekturalarini loyihalash bilan shug'ullanaman.
               </p>
               <p>
                 Mening professional diapazonim faqatgina kod yozish bilan cheklanmaydi — men yirik biznes-loyihalar ekotizimini yaratish, jamoalarni boshqarish
                 va sun'iy intellekt texnologiyalarini reallikka tadbiq etish salohiyatiga egaman. Poliglot dasturchi sifatida har qandan murakkablikdagi loyihalarni
                 bir nechta dasturlash tillarida amalga oshira olaman. React, Vue, Flutter, Python, JavaScript, TypeScript kabi texnologiyalarda chuqur tajribaga egaman.
+                Frontend dan tortib backend, mobil ilovalar, AI/ML loyihalar va DevOps jarayonlarigacha bo'lgan to'liq stack ishlab chiqish qobiliyatiga egaman.
+                Har bir loyihada eng yaxshi arxitektura patternlari, clean code tamoyillari va samarali algoritmlardan foydalanaman.
               </p>
               <p>
                 Qat'iy intizom, qorong'i va metall ranglar ustunlik qiluvchi <strong>"brutal"</strong> hamda yuqori texnologik estetika tarafdoriman.
@@ -626,21 +530,25 @@ function App() {
                 Sun'iy intellekt, blockchain va IoT kabi rivojlanayotgan texnologiyalarga katta e'tibor beraman.
                 Jamoalar bilan ishlashni, bilimlarni baham ko'rishni va yosh dasturchilarga yo'l ko'rsatishni yaxshi ko'raman.
               </p>
+              <p>
+                <strong>Asosiy erishilgan natijalarim:</strong> 5+ yillik professional tajriba, 20+ muvaffaqiyatli loyiha, 10+ doimiy mijoz, 
+                15+ o'zlashtirilgan texnologiya. ERP tizimlarini joriy etish, AI-ekotizimlarni yaratish va murakkab platformalar ishlab chiqish bo'yicha katta tajribaga egaman.
+                Har bir loyiha menga yangi bilim va ko'nikmalar olib keladi, men esa ularni keyingi loyihalarda qo'llayman.
+              </p>
+              <p>
+                <strong>Shaxsiyat xususiyatlarim:</strong> Chuqur o'ylash qobiliyati, muammolarni hal qilish mahorati, o'z-o'zini tashkil etish, 
+                vazifalarni aniq bajarish, innovatsion yechimlar topish, yangi texnologiyalarga tezkor moslashish. 
+                Men har doim o'zimni takomillashtirishga intilaman va eng yuqori natijalarga erishishga harakat qilaman.
+              </p>
             </motion.div>
 
-            <motion.div className="about-cards" variants={staggerContainerSlow}>
+            <motion.div className="about-cards" variants={staggerContainer}>
               <motion.div 
                 className="info-card" 
                 variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -8, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <MapPin size={32} />
-                </motion.div>
+                <MapPin size={32} />
                 <h3>Joylashuv</h3>
                 <p>Toshkent shahri, O'zbekiston</p>
               </motion.div>
@@ -648,15 +556,9 @@ function App() {
               <motion.div 
                 className="info-card" 
                 variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -8, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <Award size={32} />
-                </motion.div>
+                <Award size={32} />
                 <h3>Lavozim</h3>
                 <p>Dasturiy Ta'minot Arxitektori</p>
               </motion.div>
@@ -664,15 +566,9 @@ function App() {
               <motion.div 
                 className="info-card" 
                 variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -8, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Cpu size={32} />
-                </motion.div>
+                <Cpu size={32} />
                 <h3>Tug'ilgan sana</h3>
                 <p>22-fevral</p>
               </motion.div>
@@ -680,15 +576,9 @@ function App() {
               <motion.div 
                 className="info-card" 
                 variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -8, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <motion.div
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <Zap size={32} />
-                </motion.div>
+                <Zap size={32} />
                 <h3>Ish Uslubi</h3>
                 <p>Beast Mode & Night Owl</p>
               </motion.div>
@@ -696,15 +586,9 @@ function App() {
               <motion.div 
                 className="info-card" 
                 variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -8, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                <motion.div
-                  animate={{ rotate: [0, 180, 360] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                >
-                  <Layers size={32} />
-                </motion.div>
+                <Layers size={32} />
                 <h3>Ta'lim</h3>
                 <p>Qo'qon Innavations (2018)</p>
               </motion.div>
@@ -729,7 +613,7 @@ function App() {
             Sizning g'oyangizni raqamli reallikka aylantiraman
           </motion.p>
 
-          <motion.div className="services-grid" variants={staggerContainerSlow}>
+          <motion.div className="services-grid" variants={staggerContainer}>
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -808,12 +692,12 @@ function App() {
             Murakkab muammolarni sodda va samarali yechimlar
           </motion.p>
 
-          <motion.div className="projects-grid" variants={staggerContainerSlow}>
+          <motion.div className="projects-grid" variants={staggerContainer}>
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 className="project-card"
-                variants={slideIn}
+                variants={fadeInUp}
                 whileHover={{ 
                   y: -10, 
                   scale: 1.02,
@@ -922,7 +806,7 @@ function App() {
             Ish <span className="accent">Tajribasi</span>
           </motion.h2>
 
-          <motion.div className="timeline" variants={staggerContainerSlow}>
+          <motion.div className="timeline" variants={staggerContainer}>
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.company}
@@ -1027,7 +911,7 @@ function App() {
             Professional va ijodiy lahzalar
           </motion.p>
 
-          <motion.div className="gallery-grid" variants={staggerContainerSlow}>
+          <motion.div className="gallery-grid" variants={staggerContainer}>
             {[photoMain, photo1, photo2, photo3].map((photo, index) => (
               <motion.div
                 key={index}
@@ -1070,7 +954,7 @@ function App() {
             Zamonaviy va ishonchli texnologiyalar
           </motion.p>
 
-          <motion.div className="stack-grid" variants={staggerContainerSlow}>
+          <motion.div className="stack-grid" variants={staggerContainer}>
             {Object.entries(techStack).map(([category, techs], catIndex) => (
               <motion.div
                 key={category}
@@ -1135,7 +1019,7 @@ function App() {
             Loyihangiz uchun professional yondashuv kerakmi? Keling, gaplashamiz!
           </motion.p>
 
-          <motion.div className="contact-grid" variants={staggerContainerSlow}>
+          <motion.div className="contact-grid" variants={staggerContainer}>
             <motion.div className="contact-info" variants={staggerContainer}>
               <motion.a 
                 href="mailto:otabekxoff@gmail.com" 
@@ -1144,12 +1028,7 @@ function App() {
                 whileHover={{ x: 10, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <Mail size={28} />
-                </motion.div>
+                <Mail size={28} />
                 <div>
                   <h4>Email</h4>
                   <p>otabekxoff@gmail.com</p>
@@ -1163,12 +1042,7 @@ function App() {
                 whileHover={{ x: 10, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Phone size={28} />
-                </motion.div>
+                <Phone size={28} />
                 <div>
                   <h4>Telefon</h4>
                   <p>+998 88 001 67 77</p>
@@ -1180,12 +1054,7 @@ function App() {
                 variants={fadeInLeft}
                 whileHover={{ x: 10, scale: 1.02 }}
               >
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <MapPin size={28} />
-                </motion.div>
+                <MapPin size={28} />
                 <div>
                   <h4>Manzil</h4>
                   <p>Toshkent shahri, O'zbekiston</p>
@@ -1247,52 +1116,19 @@ function App() {
               </div>
             </motion.div>
 
-            <motion.form className="contact-form" variants={staggerContainerSlow}>
-              <motion.input 
-                type="text" 
-                placeholder="Ismingiz" 
-                required 
-                variants={fadeInRight}
-                whileFocus={{ scale: 1.02, borderColor: "var(--accent-gold)" }}
-                transition={{ type: "spring", stiffness: 200 }}
-              />
-              <motion.input 
-                type="email" 
-                placeholder="Email manzilingiz" 
-                required 
-                variants={fadeInRight}
-                whileFocus={{ scale: 1.02, borderColor: "var(--accent-gold)" }}
-                transition={{ type: "spring", stiffness: 200 }}
-              />
-              <motion.input 
-                type="text" 
-                placeholder="Mavzu" 
-                variants={fadeInRight}
-                whileFocus={{ scale: 1.02, borderColor: "var(--accent-gold)" }}
-                transition={{ type: "spring", stiffness: 200 }}
-              />
-              <motion.textarea 
-                placeholder="Xabaringiz..." 
-                rows="6" 
-                required 
-                variants={fadeInRight}
-                whileFocus={{ scale: 1.02, borderColor: "var(--accent-gold)" }}
-                transition={{ type: "spring", stiffness: 200 }}
-              />
+            <motion.form className="contact-form" variants={staggerContainer}>
+              <input type="text" placeholder="Ismingiz" required />
+              <input type="email" placeholder="Email manzilingiz" required />
+              <input type="text" placeholder="Mavzu" />
+              <textarea placeholder="Xabaringiz..." rows="6" required />
               <motion.button 
                 type="submit" 
                 className="btn-primary"
-                variants={bounceIn}
+                variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                {...glowPulse}
               >
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Rocket size={20} />
-                </motion.div>
+                <Rocket size={20} />
                 Xabar yuborish
               </motion.button>
             </motion.form>
