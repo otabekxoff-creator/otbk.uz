@@ -182,6 +182,13 @@
   max-width: 600px;
 }
 
+.hero-section {
+  padding-top: 6rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .hero-buttons {
   display: flex;
   gap: 1rem;
